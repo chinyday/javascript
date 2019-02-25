@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="calculator.css" />
+     <script src="calculator.js"></script>
+</head>
+<body>
+    <div class="calculator">
+        <table class="container">
+            <tr> 
+                <td colspan="4"><input class="txt_board" value='' type="text"></td>
+            </tr>
+            <tr>
+                <td><input class="btn" type="button" title="지우기" value="C" onclick="del()"></td>
+                <td><input class="btn" type="button" title="음수,양수" value="<" onclick="back()"></td>
+                <td><input class="btn" type="button" title="나" value="%" onclick=""></td>
+                <td><input class="btn" type="button" title="나누기" value="/" onclick="inset('/')"></td>
+            </tr>
+            <tr>
+                <td><input class="btn" type="button" title="" value="7" onclick="inset(7)"></td>
+                <td><input class="btn" type="button" title="" value="8" onclick="inset(8)"></td>
+                <td><input class="btn" type="button" title="" value="9" onclick="inset(9)"></td>
+                <td><input class="btn" type="button" title="곱하기" value="x" onclick="inset('*')"></td>
+            </tr>
+            <tr>
+                <td><input class="btn" type="button" title="" value="4" onclick="inset(4)"></td>
+                <td><input class="btn" type="button" title="" value="5" onclick="inset(5)"></td>
+                <td><input class="btn" type="button" title="" value="6" onclick="inset(6)"></td>
+                <td><input class="btn" type="button" title="빼기" value="-" onclick="inset('-')"></td>
+            </tr>
+            <tr>
+                <td><input class="btn" type="button" title="" value="1" onclick="inset(1)"></td>
+                <td><input class="btn" type="button" title="" value="2" onclick="inset(2)"></td>
+                <td><input class="btn" type="button" title="" value="3" onclick="inset(3)"></td>
+                <td><input class="btn btn_add" type="button" title="더하기" value="+" onclick="inset('+')"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input class="btn btn0" type="button" title="" value="0" onclick="inset(0)"></td>
+                <td><input class="btn" type="button" title="" value="." onclick="inset('.')"></td>
+                <td><input class="btn" type="button" title="" value="=" onclick="equl()"></td>
+            </tr>
+
+        </table>
+    </div>
+</body>
+</html>
