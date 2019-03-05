@@ -1,0 +1,69 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+body{
+    font-family: 'Roboto', sans-serif;
+}
+.gallery_wrap{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery_wrap .title{
+    text-align: center;
+    padding-top: 50px;
+    color: #333;
+}
+.gallery_wrap .under_bar{
+    width: 100px;
+    margin: 0 auto;
+    color: #333;
+    padding-top: 50px;
+    border-bottom: 5px solid #000;
+}
+.gallery_wrap .container{
+    margin-top: 50px;
+    padding: 0 20px;
+}
+.gallery_wrap .container ul::after{
+    display: block;
+    content: "";
+    clear: both;
+}
+.gallery_wrap .container ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.gallery_wrap .container li{
+    float: left;
+    flex: 25%;
+    cursor: pointer;
+    overflow: hidden;
+}
+.gallery_wrap .container li img{
+   width: 100%;
+   height: 100%;
+   transition: 0.4s;
+}
+.gallery_wrap .container li:hover img{
+    transform: scale(1.3) rotate(10deg);
+}
+
+@media screen and (max-width:960px){
+    .gallery_wrap .container li{
+        flex: 33.33%;
+    }
+}
+
+@media screen and (max-width:768px){
+    .gallery_wrap .container li{
+        flex: 50%;
+    }
+}
+
+@media screen and (max-width:480px){
+    .gallery_wrap .container li{
+        flex: 100%;
+    }
+}
