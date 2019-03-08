@@ -1,8 +1,23 @@
-
-#lotto_wrap{
-    margin: 20px;
+/* 상단 버튼 */
+.btn_wrpa{
+    padding: 30px;
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+}
+.btn_wrpa .btn_lotto{
+    display: inline-block;
+    width: 100px;
+    height: 20px;
+    font-size: 13px;
+    text-align: center;
 }
 
+/* 하단 로또 출력 */
+#lotto_wrap{
+    margin: 40px;
+}
 #lotto_wrap h1{
     text-align: center
 }
@@ -34,3 +49,5 @@
 .num30{ background-color: #F18D80}
 .num40{ background-color: #A7A2DE}
 .num50{ background-color: #6BCE9D}
+
+
