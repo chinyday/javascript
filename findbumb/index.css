@@ -1,0 +1,48 @@
+
+#findbumb,
+.btn_box{
+    display: block;
+    content: "";
+    clear: both;
+}
+
+#findbumb{
+    width: 430px;
+    height: 450px;
+    margin: 10px auto;
+}
+#findbumb li{
+    float: left;
+    /* display: inline-block; */
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    margin: 1px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+#findbumb li::before{
+    content:'';
+    position: absolute;
+    left: 0;
+    z-index: 5;
+    background-color: antiquewhite;
+    width: 38px;
+    height: 40px;
+}
+
+#findbumb li.on::before{
+    opacity: 0;
+}
+.btn_box{
+    margin: 60px auto 20px;
+    width: 430px;
+    height: 20px;
+}
+
+.btn_box li{
+    float: left;
+    margin-right: 10px;
+}
