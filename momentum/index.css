@@ -1,10 +1,13 @@
-.click_area{
-    padding: 20px;
-    text-align: center;
+body{
+    background-color: #778ca3;
 }
 
 
 
+.click_area{
+    padding: 20px;
+    text-align: center;
+}
 
 .bg_img{
     position: absolute;
@@ -13,6 +16,15 @@
     width: 100%;
     height: 100%;
     z-index: -1;
+    animation: fadeIn .5s linear;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
 }
 
 .dp_on{
