@@ -2,3 +2,17 @@
     padding: 20px;
     text-align: center;
 }
+
+
+
+
+.form{
+    /* display: none; */
+}
+
+.dp_on{
+    display: block;
+}
+.dp_off{
+    display: none;
+}
