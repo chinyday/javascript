@@ -14,15 +14,31 @@ input{
     background-color: transparent;
     border: 0;
     font-size: 20px;
+    border-bottom: 1px solid #a5b1c2;
 }
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #303952;
+    opacity: 1; /* Firefox */
+    text-align: center;
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #303952;
+    text-align: center;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #303952;
+    text-align: center;
+  }
 
 /* 시계 */
 .click_area{
-    padding: 100px 0 50px;
+    padding: 140px 0 50px;
     text-align: center;
 }
 .click_area h2{
-    font-size: 40px;
+    font-size: 50px;
 }
 
 /* 이름 */
@@ -38,15 +54,34 @@ input{
 .todolist_area{
     text-align: center;
 }
+.toDoList{
+    padding: 10px 0;
+    width: 500px;
+    margin: 0 auto;
+}
+.toDoList li{
+    padding: 5px 0;
+}
+.toDoList li button{
+    margin-left: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    cursor: pointer;
+}
 
 /* 날씨 */
 .weather{
     position: absolute;
     top: 20px;
     right: 20px;
-    padding-left: 55px;
-    height: 30px;
-    line-height: 30px;
+    padding-left: 30px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: left center;
 }
 /* 배경 */
 .bg_img{

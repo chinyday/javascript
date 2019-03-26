@@ -11,7 +11,7 @@ function getWeather(latitude, longitude) {
         const name = json.name;
         let icon = json.weather[0].icon;
         icon = `http://openweathermap.org/img/w/${icon}.png`;
-        weather.style.background = `url(${icon}) left center no-repeat`;
+        weather.style.backgroundImage = `url(${icon})`;
         weather.innerText = `${tem}°C  @${name}`;
     });
 }
