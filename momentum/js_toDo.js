@@ -1,6 +1,3 @@
-
-
-
 const toDoArea = document.querySelector('.js-toDoArea'),
     toDoform = toDoArea.querySelector('.js-toDoForm'),
     toDoInput = toDoArea.querySelector('input'),
@@ -11,8 +8,9 @@ let toDoArr = [];
 
 
 function delTodo(event){
-    const btn = event.target; 
+    const btn = event.target.parentNode; 
     const li = btn.parentNode;
+    
     toDoList.removeChild(li);
     const resetToDoList = toDoArr.filter(function(toDO) {
         return toDO.id !== parseInt(li.id)
@@ -27,10 +25,11 @@ function saveToDoToLocal() {
 
 function paintToDo(text) {
     const li = document.createElement('li');
-    const delBtn = document.createElement('button');
+    const delBtn = document.createElement('span');
     const span = document.createElement('span');
     const newLiID = toDoArr.length+1;
-    delBtn.value = 'X';
+    delBtn.classList.add('delbtn');
+    delBtn.innerHTML = '<i class="far fa-trash-alt"></i>';
     delBtn.addEventListener('click', delTodo);
     span.innerText = text;
     li.id = newLiID;
