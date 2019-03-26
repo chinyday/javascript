@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="reset.css">
     <link rel="stylesheet" type="text/css" media="screen" href="index.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">
 </head>
 <body>
     <div class="click_area js-clock">
@@ -20,16 +21,18 @@
         <h4 class="js-greeting dp_off"></h4>
     </div>
 
-    <div class="js-toDoArea">
+    <div class="todolist_area js-toDoArea">
        <form class="js-toDoForm">
            <input type="text" class="toDo_input" placeholder="Write what to do">
        </form>
        <ul class="js-toDoList"></ul>
     </div>
-    
+    <span class="js-weather weather"></span> 
+
     <script src="js_clock.js"></script>
     <script src="js_setname.js"></script>
     <script src="js_toDo.js"></script>
     <script src="js_bg.js"></script>
+    <script src="js_weather.js"></script>
 </body>
 </html>

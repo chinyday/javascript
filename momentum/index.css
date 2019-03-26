@@ -1,14 +1,54 @@
 body{
     background-color: #778ca3;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
+.dp_on{
+    display: block;
+}
+.dp_off{
+    display: none;
+}
 
+input{
+    background-color: transparent;
+    border: 0;
+    font-size: 20px;
+}
 
+/* 시계 */
 .click_area{
-    padding: 20px;
+    padding: 100px 0 50px;
+    text-align: center;
+}
+.click_area h2{
+    font-size: 40px;
+}
+
+/* 이름 */
+.name_area{
+    text-align: center;
+    padding: 20px 0;
+}
+.name_area h4{
+    font-size: 20px;
+}
+
+/* 리스트 */
+.todolist_area{
     text-align: center;
 }
 
+/* 날씨 */
+.weather{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding-left: 55px;
+    height: 30px;
+    line-height: 30px;
+}
+/* 배경 */
 .bg_img{
     position: absolute;
     top: 0;
@@ -27,9 +67,3 @@ body{
     }
 }
 
-.dp_on{
-    display: block;
-}
-.dp_off{
-    display: none;
-}
