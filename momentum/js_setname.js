@@ -2,6 +2,7 @@ const nameArea = document.querySelector('.js-name'),
     form = nameArea.querySelector('form'),   
     input = nameArea.querySelector('input'),    
     name = nameArea.querySelector('.js-greeting');
+    inputName = nameArea.querySelector('.name_txt');
 
 
 const USER_LOCALS = 'currName';
@@ -27,7 +28,7 @@ function askingName() {
 function paintGreeting(text) {
     input.classList.add(SHOWING_OFF);
     name.classList.remove(SHOWING_OFF);
-    name.innerText = `Hello, ${text}`;
+    inputName.innerText = `${text}`;
     saveName(text); 
 }
 
