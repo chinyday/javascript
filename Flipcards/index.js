@@ -4,22 +4,27 @@ const flipWrap = document.querySelector('.flipWrap');
 
 const hori = 4;
 const verti = 4;
-
 const imgArr = ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg','1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg'];
-
 let ranArr = [];
 
-function handleClickCard() {
-    const card = document.querySelector('.card');
-    card.classList.toggle('flip');
+
+function handleClickCard(card) {
+    
+    const thisCard = card.path[2];
+   
+    if (thisCard.classList.contains('flip')) {
+        thisCard.classList.remove('flip');
+    }else{
+        thisCard.classList.add('flip');
+    }
 }
 
+// 이미지 랜덤으로 섞기 
 function randomImg() {
     while (imgArr.length > 0) {
         let img = imgArr.splice(Math.floor(Math.random()*imgArr.length),1)[0];
         ranArr.push(img);
     }
-    console.log(ranArr);
 }
 
 
@@ -41,23 +46,18 @@ function paintCards(hori, verti) {
         cardInner.appendChild(divBack);
         card.appendChild(cardInner);
         flipWrap.appendChild(card);
-        
-        (function(c){
-            // c.addEventListener('click', handleClickCard); 
-            card.addEventListener('click', function() {
-                c.classList.toggle('flip');
-            }); 
-        })(card); 
+
+        card.addEventListener('click', handleClickCard,true); 
     }    
 }
 
 
 
 
+
+
 function init() {
     paintCards(hori,verti);
-    // randomColor();
-   
-    // card.addEventListener('click', handleClickCard); 
+    // gameStart();
 }
 init();
