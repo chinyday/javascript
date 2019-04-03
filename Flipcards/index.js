@@ -2,11 +2,8 @@ const flipWrap = document.querySelector('.flipWrap');
 const resetBtn = document.querySelector('.resetBtn');
 const hori = 4;
 const verti = 4;
-const imgArr = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
-let ranArr = [];
 let clickflag = true;
 let clickedCard = [];
-
 
 function timeOut() {
     let cards = document.querySelectorAll('.card');
@@ -19,24 +16,21 @@ function checkSameImg() {
     if(clickedCard.length === 2){
         if(clickedCard[0].path[2].classList[1] === clickedCard[1].path[2].classList[1]){   
             setTimeout(function() {
-
                 clickedCard[0].path[2].classList.add('done');
                 clickedCard[1].path[2].classList.add('done');
                 clickedCard[0].path[2].classList.remove('flip');
                 clickedCard[1].path[2].classList.remove('flip');
-
                 clickedCard = [];
-            },1000);
+            },500);
         }else{
             setTimeout(function() {
                 clickflag = false;
                 timeOut();
                 clickflag = true;
                 clickedCard = [];
-            },500);
+            },700);
         }
-    }
-    
+    }  
 }
 
 function handleClickCard(card) { 
@@ -46,14 +40,16 @@ function handleClickCard(card) {
 }
 
 function randomImg() {
+    let imgArr = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
+    let ranArr = [];
     while (imgArr.length > 0) {
         let img = imgArr.splice(Math.floor(Math.random()*imgArr.length),1)[0];
         ranArr.push(img);
     }
+    return ranArr;
 }
 
-function paintCards(hori, verti) {
-    randomImg();
+function paintCards(ranArr) {
     for (let index = 0; index < hori*verti; index++) {
         const card = document.createElement('div');
         card.classList.add('card');
@@ -74,17 +70,21 @@ function paintCards(hori, verti) {
         card.appendChild(cardInner);
         flipWrap.appendChild(card);
 
-        card.addEventListener('click', handleClickCard,true); 
+        card.addEventListener('click', handleClickCard, true); 
     }    
 }
 
-// function reStartBtn() {
-//     init();
-// }
+resetBtn.addEventListener('click',reStartBtn);
+function reStartBtn() {
+    flipWrap.innerHTML = '';
+    clickedCard = [];
+    let randomArr = randomImg();
+    paintCards(randomArr);
+}
 
-// resetBtn.addEventListener('click',reStartBtn);
 function init() {
-    paintCards(hori,verti);
+    let randomArr = randomImg();
+    paintCards(randomArr);
 }
 init();
 
