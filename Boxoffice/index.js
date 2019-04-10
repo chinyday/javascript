@@ -52,11 +52,11 @@ function getMovie(day,TYPE) {
         
         if(TYPE === 'searchDailyBoxOfficeList'){
             makeBoxOffice(json.boxOfficeResult.dailyBoxOfficeList);
-            span.innerText = day;
+            span.innerText =  `기준 : ${day}`;
             txt.innerText = '당일 기준, 전 날의 통계로 나열됩니다.';
         }else{
             makeBoxOffice(json.boxOfficeResult.weeklyBoxOfficeList); 
-            span.innerText = json.boxOfficeResult.showRange; 
+            span.innerText = `기준 : ${json.boxOfficeResult.showRange}`; 
             txt.innerText = '당일 기준, 전 주의 통계로 나열됩니다.';  
         }  
     });
@@ -69,7 +69,7 @@ function numberWithCommas(num) {
 
 function makeBoxOffice(json) {
     let movInfo = "";
-    
+
     movInfo += '<tr><th>순위</th><th>영화명</th><th>개봉일</th><th>누적관객수</th></tr>';
     rank_thead.innerHTML = movInfo;
     movInfo = '';

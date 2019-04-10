@@ -25,6 +25,7 @@
 }
 .tab_box li.on{
     background-color: #ff7675;
+    color: #fff;
 }
 
 .info_box{
