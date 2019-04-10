@@ -1,0 +1,54 @@
+
+.box_office{
+    width: 500px;
+    margin: 0 auto;
+}
+.tab_box::after{
+    display: block;
+    content: "";
+    clear: both;
+}
+.tab_box{
+    margin: 20px;
+}
+.tab_box li{
+    float: left;
+    padding: 15px 0;
+    cursor: pointer;
+    width: 50%;
+    text-align: center;
+}
+.tab_box li.on{
+    background-color: #ff7675;
+}
+
+.info_box{
+    height: 50px;
+}
+.info_box .search_date{
+    /* float: right; */
+}
+
+.ranking_box{
+    width: 500px;
+    margin: 30px 0;
+}
+
+.ranking_box .rank_header th{
+    height: 30px;
+    line-height: 30px;
+    color: #848484;
+    font-size: 15px;
+    font-weight: normal;
+    border-bottom: 1px solid #c9c9c9;
+    text-align: center;
+}
+
+.ranking_box .rank_body td{
+    height: 45px;
+    line-height: 45px;
+    color: #444;
+    font-size: 15px;
+    font-weight: normal;
+    text-align: center;
+}
