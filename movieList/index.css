@@ -1,0 +1,224 @@
+#wrap{
+    background-color: #343434;
+}
+#wrap .movie_site::after{
+    display: block;
+    content: "";
+    clear: both;
+}
+
+#wrap .movie_site{
+    width: 1000px;
+    margin: 0 auto;
+    background-color: #343434;
+}
+
+#wrap .movie_site > section{
+    float: left;
+}
+
+/* left_section GNB */
+.left_section{
+    width: 200px;
+    /* background-color: tomato */
+}
+.left_section .logo{
+    line-height: 100px;
+}
+.left_section .gnb .gnb_inner li{
+    height: 40px;
+    line-height: 40px;
+    font-size: 15px;
+    color: #fdfdfd;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.left_section .gnb .gnb_inner li.on{
+    
+    border-right: 3px solid #18a27f;
+}
+.left_section .gnb .gnb_inner li.hr{
+    margin-block-start: 1.2em;
+    margin-block-end: 1.2em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    border-style: inset;
+    border-width: .5px;
+    border-color: #3b3b3b;
+    height: 0;
+    width: 85%;
+}
+
+
+/* right_section  */
+
+.main_movie_div{
+    margin-top: 20px;
+}
+.main_movie_div,
+.main_movie_div .list{
+    height: 450px;
+}
+.main_movie_div .list{
+    position: relative;
+}
+
+.main_movie_div .bg{
+    background: #000;
+    z-index: 2;
+    width: 20%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+.main_movie_div .bg::before{
+    content: '';
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    bottom: 0;
+    left: 100%;
+    width: 200px;
+    background-image: -webkit-gradient(linear,left top,right top,from(#000),to(transparent));
+    background-image: -webkit-linear-gradient(left,#000,transparent);
+    background-image: -moz- oldlinear-gradient(left,#000,transparent);
+    background-image: -o-linear-gradient(left,#000,transparent);
+    background-image: linear-gradient(to right,#000,transparent);
+}
+.main_movie_div .info{
+    position: absolute;
+    z-index: 5;
+    top: 130px;
+    left: 35px;
+    color: #fff;
+}
+.main_movie_div .info .title{
+    font-size: 25px;
+}
+.main_movie_div .info .subinfo{
+    font-size: 13px;
+    line-height: 30px;
+}
+.main_movie_div .info .subinfo span{
+    margin-right: 5px;
+}
+.main_movie_div .info .subinfo .line{
+    border-right: 1px solid;
+    height: 10px;
+    display: inline-block;
+    line-height: 20px;
+}
+
+.main_movie_div .info .overview{
+    width: 370px;
+    font-size: 14px;
+    margin-top: 40px;
+    word-break: keep-all;
+    color: #ddd;
+    line-height: 1.5;
+}
+
+.main_movie_div .img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: -500% 0;
+}
+
+
+
+
+.right_section{
+    width: 780px;
+    margin-left: 20px;
+    /* background-color: blueviolet */
+}
+.right_section .list::after{
+    display: block;
+    content: "";
+    clear: both;
+}
+.right_section .sub_title{
+    line-height: 70px;
+    font-size: 17px;
+}
+.right_section .m_box{
+    float: left;
+    width: 175px !important;
+    height: 240px;
+    /* background-color: cadetblue; */
+    margin: 0 20px 20px 0;
+    position: relative;
+}
+.right_section .m_box.on{
+    width: 365px !important;
+    z-index: 1;
+}
+.right_section .m_box span.thum{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+.right_section .m_box span.thum > img{
+    width: 100%;
+    height: 100%;
+} 
+
+
+
+/* 클릭시 나오는 영화정보 */
+.right_section .m_box.on .info_wrap{
+    display: block;
+}
+.list_wrap .info_wrap{
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 345px;
+    height: 220px;
+    padding: 10px;
+    background-color: #2e2e2e;
+}
+.list_wrap .info_wrap > li{
+    float: left;
+}
+.list_wrap .info_wrap li span{
+    display: block
+}
+.list_wrap .info_wrap > li img{
+   width: 160px;
+   height: 220px;
+}
+.list_wrap .info_wrap .m_info{
+    width: 160px;
+    float: right;
+    color: #fff;
+    padding-top: 25px;
+    padding-right: 10px;
+}
+.list_wrap .info_wrap .m_info .m_title{
+    font-size: 16px;
+    padding-bottom: 15px;
+}
+.list_wrap .info_wrap .m_info .m_runtime,
+.list_wrap .info_wrap .m_info .m_genres{
+    font-size: 13px;
+    padding-bottom: 5px;
+    color: #d5d5d5;
+}
+.list_wrap .info_wrap .m_info .m_overview{
+    font-size: 10px;
+    padding-top: 13px;
+    line-height: 15px;
+    color: #d5d5d5;
+    word-break: keep-all;
+    height: 90px;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    white-space: normal;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+}
