@@ -1,0 +1,40 @@
+.wrapper{
+    width: 500px;
+    margin: 0 auto;
+}
+
+/* category_wrap */
+.category_wrap{
+    height: 50px;
+    line-height: 50px;
+}
+.category_wrap span{
+    margin-right: 20px;
+}
+.category_wrap input{
+    margin-right: 10px;
+}
+
+/* txt_wrap */
+.txt_wrap .txt_area{
+    width: 300px;
+    height: 100px;
+}
+
+/*  list_wrap */
+.list_wrap{
+    margin: 20px 0;
+}
+.list_wrap .subtitle{
+    font-weight: bold;
+}
+.list_wrap .subtitle.off{
+    display: none;
+}
+.list_wrap li{
+   padding: 5px 0;
+}
+.list_wrap .to{
+    width: 80px;
+    display: inline-block;
+}
