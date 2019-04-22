@@ -20,19 +20,23 @@ jQuery(document).ready(function() {
     }
 
     // li 출력
+    let all_tr = "";
     function paintLI(data) {
         document.querySelector('.subtitle').classList.remove('off');
 
-        let li = document.createElement('li');
-        let to = document.createElement('span');
-        let txt = document.createElement('span');
-        to.classList.add('to');
-        to.innerText = data.radioBtn;
-        txt.innerText = data.txt;
-        li.appendChild(to);
-        li.appendChild(txt);
-        list.appendChild(li);
-        list.insertBefore(list.lastChild, list.childNodes[0]);
+        let tr = "";
+        tr = ` <tr>
+                <td class="to">${data.radioBtn}</td>
+                <td><pre>${data.txt}</pre></td>
+            </tr>`
+        all_tr += tr; 
+        list.innerHTML = all_tr;
+       
+        let childNodes = list.childNodes,
+        i = childNodes.length;
+
+        while (i--)
+            list.appendChild(childNodes[i]);  
     }
 
     //  list를 출력하고, 로컬에 데이터를 저장
@@ -43,8 +47,9 @@ jQuery(document).ready(function() {
     }
 
     // 라디오버튼을 클릭했을 때 카테고리별로 정렬
-    function sortList(data) {
-        list.innerHTML = '';
+    function sortList(data) { 
+        all_tr = "";   
+        list.innerHTML = "";
         for (let i = 0; i < data.length; i++) {
             paintLI(data[i]);
         }
@@ -97,12 +102,13 @@ jQuery(document).ready(function() {
         }
     }
 
+    sendBtn.addEventListener('click', handleSumit); 
+
     function init() {
         loadList();
         for (let i of AllradioBtn) {
             i.addEventListener('click',checkedRadioBtn);   
         }
-        sendBtn.addEventListener('click', handleSumit); 
     }
     init();
 

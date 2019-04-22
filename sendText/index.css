@@ -31,8 +31,10 @@
 .list_wrap .subtitle.off{
     display: none;
 }
-.list_wrap li{
+.list_wrap tr{
    padding: 5px 0;
+   height: 25px;
+   line-height: 25px;
 }
 .list_wrap .to{
     width: 80px;
