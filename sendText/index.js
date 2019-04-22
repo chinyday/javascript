@@ -1,5 +1,5 @@
 
-jQuery(document).ready(function() {
+
     
     let categoryWrap = document.querySelector('.category_wrap');
     let AllradioBtn = categoryWrap.getElementsByTagName('input');
@@ -21,7 +21,7 @@ jQuery(document).ready(function() {
 
     // li 출력
     let all_tr = "";
-    function paintLI(data) {
+    function paintTR(data) {
         document.querySelector('.subtitle').classList.remove('off');
 
         let tr = "";
@@ -41,7 +41,7 @@ jQuery(document).ready(function() {
 
     //  list를 출력하고, 로컬에 데이터를 저장
     function paintList(text) {
-        paintLI(text);
+        paintTR(text);
         listArr.push(text);
         saveListLocal(); // 데이터 저장
     }
@@ -51,7 +51,7 @@ jQuery(document).ready(function() {
         all_tr = "";   
         list.innerHTML = "";
         for (let i = 0; i < data.length; i++) {
-            paintLI(data[i]);
+            paintTR(data[i]);
         }
     }
 
@@ -78,9 +78,12 @@ jQuery(document).ready(function() {
     //선택된 버튼에 checked 설정
     function checkedRadioBtn(event) {
         let clickedBtn = event.target;
-        jQuery(clickedBtn).attr('checked',true).siblings().removeAttr('checked');
         let sameList = []; 
 
+        // jQuery(document).ready(function() {
+        //     jQuery(clickedBtn).attr('checked',true).siblings().removeAttr('checked');
+        // });
+        
         if(listInLocal !== null){
             loadListInLacal.forEach(function(listArr){
                 if(clickedBtn.value == listArr.radioBtn){
@@ -112,4 +115,3 @@ jQuery(document).ready(function() {
     }
     init();
 
-});
