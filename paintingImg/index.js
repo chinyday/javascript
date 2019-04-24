@@ -1,5 +1,5 @@
 const canvas = document.getElementById('jsCanvas');
-const ctx =  canvas.getContext("2d");
+const ctx =  canvas.getContext('2d');
 let colors = document.getElementsByClassName('color_btn');
 let range = document.getElementById('jsRange');
 let fill = document.getElementById('jsFill');
@@ -16,11 +16,11 @@ ctx.fillStyle = "#2d3436";
 ctx.lineWidth = 2.5;
 
 let painting = false;
-let filling = false;
+let filling = false;                    
 
 function onMouseMove(event) {
-    const x = event.offsetX;
-    const y = event.offsetY;
+    let x = event.offsetX;
+    let y = event.offsetY;
 
     if(!painting){
         ctx.beginPath();
@@ -45,6 +45,7 @@ function handleChangeColor(event) {
 }
 
 function handleChangeRange(event) {
+    range.setAttribute('value', event.target.value);
     ctx.lineWidth = event.target.value;
 }
 
