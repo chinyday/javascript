@@ -97,8 +97,8 @@ function getTrendingMovie_info(data) {
 
 let all_movInfo = "";
 function paint_comingupUl(data) {
-    let comingup_div = document.querySelector('.comingup_div');
-    let list = comingup_div.querySelector('.list');
+    let comingup_div = document.querySelector(".comingup_div");
+    let list = comingup_div.querySelector(".list");
     
     let movInfo = "";
     var genres = [];
@@ -128,8 +128,8 @@ function paint_comingupUl(data) {
 
 let all_movInfo1 = "";
 function paint_topratedUl(data) {
-    let toprated_div = document.querySelector('.toprated_div');
-    let list = toprated_div.querySelector('.list');
+    let toprated_div = document.querySelector(".toprated_div");
+    let list = toprated_div.querySelector(".list");
     
     let movInfo = "";
     var genres = [];
@@ -159,8 +159,8 @@ function paint_topratedUl(data) {
 
 let all_movInfo2 = "";
 function paint_popularUl(data) {
-    let popular_div = document.querySelector('.popular_div');
-    let list = popular_div.querySelector('.list');
+    let popular_div = document.querySelector(".popular_div");
+    let list = popular_div.querySelector(".list");
     
     let movInfo = "";
     var genres = [];
@@ -191,8 +191,8 @@ function paint_popularUl(data) {
 
 let all_movInfo3 = "";
 function paint_trendingUl(data) {
-    let trending_div = document.querySelector('.trending_div');
-    let list = trending_div.querySelector('.list');
+    let trending_div = document.querySelector(".trending_div");
+    let list = trending_div.querySelector(".list");
     
     let movInfo = "";
     let genres = [];
@@ -224,8 +224,8 @@ function paint_trendingUl(data) {
 let main_movInfo = "";
 function paint_main_movie_info(data) {
     console.log(data);
-    let main_movie_div = document.querySelector('.main_movie_div');
-    let list = main_movie_div.querySelector('.list');
+    let main_movie_div = document.querySelector(".main_movie_div");
+    let list = main_movie_div.querySelector(".list");
     let movInfo = "";
     
     let genres = [];
@@ -247,7 +247,7 @@ function paint_main_movie_info(data) {
 
                 </div>
                 <div class="bg"></div>
-                <div class="img" style="background-image:url('${url}')";></div>
+                <div class="img" style="background-image:url("${url}")";></div>
                 `;   
                 
             //     <div class="img">

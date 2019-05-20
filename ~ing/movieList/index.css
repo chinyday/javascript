@@ -52,6 +52,17 @@
 
 /* right_section  */
 
+
+.list_div{
+    overflow: hidden;    
+    position: relative;
+}
+.list_div .list{
+    width: 10000%;
+}
+
+
+
 .main_movie_div{
     margin-top: 20px;
 }
