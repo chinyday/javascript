@@ -1,5 +1,4 @@
 /*  
-야구게임 
 1. 랜덤으로 중복되지 않는 세자리의 숫자(a)를 받아온다.
 2. 게이머가 임의의 세자리 숫자(b)를 넣고 확인
 3. a의 숫자와 b의 숫자를 비교하여, 
@@ -7,17 +6,6 @@
     3-2 a의 숫자중 b의 숫자가 동일한 위치에 있으면(숫자 및 위치 비교) 1s
 4. 게임은 총 10번의 기회가 있다.
 5. a와 b가 동일한 숫자가 나오면 게임 끝
-
-1. 게임시작 -> 랜덤 숫자 3개 출력해서 배열에 넣기 start()
-2. 게이머가 숫자를 입력하고 전송 클릭 했을 때 - 라운드 10번이내 3개 숫자를 다 맞추면 게임승리! 라운드 10번이 넘으면 게임 실패 send()
-3. 밸리데이션 체크 validationChk()
-4. 입력한 숫자 3개 배열에 넣기 send()
-5. 랜덤숫자 3개 배열과 입력한 숫자의 배열 비교 compareValue
-배열끼리 값이 같을때, 배열 인덱스가 같으면 스트라이크
-배열끼리 값이 같을때, 배열 인덱스가 다르면 볼
-스트라이크와 볼이 아니면 아웃
-6. 라운드 별 결과를 html로 그리기 gameRoundHtml()
-
 */ 
 
 
@@ -209,6 +197,3 @@ function init(){
 document.querySelector('.startBtn').addEventListener('click', init);
 document.querySelector('.resetBtn').addEventListener('click', reSet);
 document.querySelector('.submitBtn').addEventListener('click', baseballProcess);
-
-
-
