@@ -1,22 +1,14 @@
-/*  
-
-1. 랜덤으로 중복되지 않는 세자리의 숫자(a)를 받아온다.
-2. 게이머가 임의의 세자리 숫자(b)를 넣고 확인
-3. a의 숫자와 b의 숫자를 비교하여, 
-    3-1 a의 숫자중 b의 숫자가 동일한게 있으면(단순 숫자만 비교) 1b
-    3-2 a의 숫자중 b의 숫자가 동일한 위치에 있으면(숫자 및 위치 비교) 1s
-4. 게임은 총 10번의 기회가 있다.
-5. a와 b가 동일한 숫자가 나오면 게임 끝
-
-*/ 
-
-
 var inputNumAmount = 3; // 입력 되는 숫자 수
 var num_arr = [];
 var insert_number = document.querySelector('.insert_number'),
     game_num = document.querySelector('.game_num');
-var ball=0, strike=0, out=0, count=10;
- 
+
+var numberObj = {
+    ball : 0,
+    strike : 0,
+    out : 0,
+    count : 10
+}
  
 // input 오직 숫자만 받아오는 프로세스
 function isNumberKey(evt){
@@ -32,19 +24,19 @@ insert_number.addEventListener("keydown", isNumberKey);
 // 중복되지 않는 숫자를 받아와서 배열에 넣는 프로세스
 function setNumberinArr() { 
     for (var i = 0; i < inputNumAmount; i++) {
-        var num = checkDebleNumber();
+        var num = isUniqueNum(); // 이름이 올바르지 않게 느껴지기 때문에 이름을 변경하자!
         num_arr[i] = num;    
      }    
     game_num.setAttribute('value', num_arr.join('') );   
 }
 
 // 배열에 중복되지 않는 숫자가 나올 때까지 랜덤의 숫자를 뽑아내는 프로세스
-function checkDebleNumber(){
-    var isDupCheck = true;
-    while (isDupCheck) {
+function isUniqueNum(){
+    var isDubCheck = true;
+    while (isDubCheck) {
         random_num = Math.floor(Math.random()*10);
         if(!num_arr.includes(random_num)) {
-            isDupCheck = false; 
+            isDubCheck = false; 
         }
     }
     return random_num;
@@ -74,22 +66,22 @@ function drowingUlProcess(data) {
         li = document.createElement('li');
         
     li.classList.add("li");
-    li.innerText = data.num+' : strike ' + data.strike + ', ball ' + data.ball + ', out ' + data.out; 
+    li.innerHTML = '<span class="my_data"> 입력한 숫자 : ' + data.num+'</span><span class="state"> strike ' + data.strike + ', ball ' + data.ball + ', out ' + data.out + '</span>'; 
     ul.appendChild(li); 
 }
 
 // 게임 카운팅을 관리하는 프로세스
 var gameCount = {
     count : function () {
-        return count;
+        return numberObj.count;
     },
     increaseCounting : function () {
-        count = count-1;
-        return count;
+        numberObj.count = numberObj.count-1;
+        return numberObj.count;
     },
     decreaseCounting : function () {
-        count = count+1;
-        return count;
+        numberObj.count = numberObj.count+1;
+        return numberObj.count;
     }      
 }
 
@@ -112,62 +104,74 @@ function compareDataProcess(my_value_arr, game_value) {
         var resultType = checkDataReturnType(i, my_value_arr, game_value);  
           
         if(resultType == 'out'){
-            out++;
+            numberObj.out++;
         }else if(resultType == 'ball'){
-            ball++;
+            numberObj.ball++;
         }else if(resultType == 'strike'){
-            strike++;
+            numberObj.strike++;
         } 
     }
     return {
         num : insert_number.value,
-        strike : strike,
-        ball : ball,
-        out : out
+        strike : numberObj.strike,
+        ball : numberObj.ball,
+        out : numberObj.out
     };         
 }
 
 // 게임 횟수 차감 및 횟수에 따른 실행 동작 리턴
-function gameTimesProcess(count) {
+function validatecheck(count) {
     var my_value_arr = insert_number.value.split("");
-    
-    while(count>=0){
-        for (let i = 0; i < 1; i++) {
-            if(insert_number.value == ''){
-                insertStateTxt('숫자를 입력하세요.');  
-                return false;
-            }else if(my_value_arr.length != inputNumAmount){
-                insertStateTxt('세자리의 숫자를 입력해 주세요.');  
-                return false; 
-            }else if(my_value_arr[i] == my_value_arr[i+1] || my_value_arr[i] == my_value_arr[i+2] || my_value_arr[i+1] == my_value_arr[i+2]){  
-                insertStateTxt('중복된 숫자를 사용했습니다.');        
-                return false;
-            }
-            return true;    
-        }
+
+    if(count==0){
+        gameCount.decreaseCounting();
+        insertStateTxt('실패 게임 횟수가 끝났습니다.');
+        return false;
     }
-    gameCount.decreaseCounting();
-    insertStateTxt('실패 게임 횟수가 끝났습니다.');
-    return false;
+    
+    if(insert_number.value == ''){
+        gameCount.decreaseCounting();
+        insertStateTxt('숫자를 입력하세요.');  
+        return false;
+    }else if(my_value_arr.length != inputNumAmount){
+        gameCount.decreaseCounting();
+        insertStateTxt('세자리의 숫자를 입력해 주세요.');  
+        return false; 
+    }else if(my_value_arr[0] == my_value_arr[1] || my_value_arr[0] == my_value_arr[2] || my_value_arr[1] == my_value_arr[2]){  
+        gameCount.decreaseCounting();
+        insertStateTxt('중복된 숫자를 사용했습니다.');        
+        return false;
+    }
+
+    return true;    
+    
 }
 
-function baseballProcess() {   
-    var my_value_arr = insert_number.value.split("");
-    var game_value = game_num.getAttribute('value');  
-    ball = 0, strike = 0, out = 0;   
-    insertStateTxt('');
-    var gmaeCounting = gameCount.increaseCounting();
-    var myNumStateType = gameTimesProcess(gmaeCounting);
- 
-    if(myNumStateType == true){
-        var resultDrowingData = compareDataProcess(my_value_arr, game_value);
-        drowingUlProcess(resultDrowingData);
-    }
-    if(strike === 3){
+// 정답을 맞췄을 경우 실행되는 프로세스
+function isRightAnswer(data) {
+    if(data.strike === 3){ // 게임이 올바르게 진행될 수 있고 게임이 끝나야하는 상태
         insertStateTxt('숫자 맞추기 성공!');
         document.querySelector('.insert_number').disabled = true;
-    }  
-    insert_number.value = ''; 
+    }     
+}
+
+// 오케스트레이션 하는 프로세스
+function baseballProcess() {  
+    // 안에 내용이 너무 복잡하게 되어 있어서 이해하는 부분이 조금 어렵기 때문에 이 부분은 좀 더 댑스를 나누자 
+    var my_value_arr = insert_number.value.split("");
+    var game_value = game_num.getAttribute('value');  
+    numberObj.ball = 0, numberObj.strike = 0, numberObj.out = 0;   
+    insertStateTxt('');
+    var gameCounting = gameCount.increaseCounting();
+    var isGameState = validatecheck(gameCounting); // 타입이라고 하면 정의되어 있는 값이 넘어가기 때문에 이름이 올바르지 않음
+ 
+    if(isGameState == true){ // 게임이 올바르게 진행될 수 있는 상태
+        var resultDrowingData = compareDataProcess(my_value_arr, game_value);
+        drowingUlProcess(resultDrowingData);
+        isRightAnswer(resultDrowingData);
+    }
+    
+    insert_number.value = '';   
 }
 
 // 정상적으로 게임이 진행되지 않았을 경우에 어떠한 메시지를 노출해주는 프로세스
@@ -199,3 +203,6 @@ function init(){
 document.querySelector('.startBtn').addEventListener('click', init);
 document.querySelector('.resetBtn').addEventListener('click', reSet);
 document.querySelector('.submitBtn').addEventListener('click', baseballProcess);
+
+
+
