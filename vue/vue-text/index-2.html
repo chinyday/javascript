@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="app">
+    <app-header></app-header>
+    <app-compo v-on:add="add" v-bind:datas="list"></app-compo>
+    
+    <ul v-on:add="addNumber" v-bind:datas="list">
+        <li v-for="(list, i) in list"><span>{{list.name}}</span> <span>{{list.num}}</span> <button v-on:click="addNumber(i)">투표</button></li>
+    </ul>
+    
+    <app-re v-on:remove="resetData" v-on:show="showResult" v-bind:datas="list"></app-re>
+    
+    <p v-show="result">결과 : {{choice.name}}입니다.</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+ 
+var appHeader = {
+    template: '<div>2분기 회식 매뉴 투표</div>'
+}
+var appComponent = {
+     template: '<ul><li v-for="(list, i) in datas"><span>{{list.name}}</span> <span>{{list.num}}</span> <button v-on:click="increase(i)">투표</button></li></ul>',
+     props: ['datas'],
+     methods:{
+         increase : function () {
+             this.$emit("add");
+         }
+     }
+}
+
+var appRe = {
+    template : '<div><button v-on:click="removeDataBtn">초기화하기</button><button v-on:click="showResultBtn">결과보기</button></div>',
+    methods:{
+        removeDataBtn : function () {
+            this.$emit("remove");
+        },
+        showResultBtn : function (){
+            this.$emit("show");
+        }
+        
+    }
+}
+
+new Vue({
+    el:'#app',
+    components: {
+        'app-header': appHeader,  
+        'app-compo': appComponent,  
+        'app-re' :appRe
+    },
+    data:{
+        list :
+            [{name:'소고기',num:0},
+            {name:'소곱창',num:0},
+            {name:'장어',num:0}],
+        choice : {
+            name:'',
+            num:0,
+        },
+        result : false
+    },
+    methods:{
+        addNumber : function (i) {
+        //   for(var j = 0; j<this.list.length; j++){
+            //   if(i == j)
+            //   return this.list[i].num = this.list[i].num+1;
+            this.list[i].num = this.list[i].num+1;
+        //   }      
+      },
+        resetData : function () {
+          for(var j = 0; j < this.list.length; j++){
+             this.list[j].num = 0;
+          }  
+           this.result = false;
+           this.choice = {};
+      },
+        showResult : function(){
+            var max = this.list.reduce(function(a, b) {
+              return a.num > b.num ? a : b;
+            });
+        
+            var count =0;
+            for (let i = 0; i < this.list.length; i++) {
+                if (this.list[i].num == max.num) {
+                    count++;
+                }    
+            }
+            
+            this.choice.name = (count > 1) ? '재투표' : max.name;
+            this.choice.num = max.num;
+            this.result = true;
+            
+        }
+      
+    }
+    
+})
+</script>
+
+</body>
+</html>
+

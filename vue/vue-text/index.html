@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="app">
+    <app-header></app-header>
+    <app-compo v-on:add="numAdd" v-bind:num="beef.num" v-bind:name="beef.name"></app-compo>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+var appHeader = {
+    template: '<div>2분기 회식 매뉴 투표</div>'
+}
+var appComponent = {
+     template: '<div><span>{{ name }}</span> <span>{{ num }}</span> <button v-on:click="increase">투표</button> </div>',
+     props: ['num', 'name'],
+     methods:{
+         increase : function () {
+             this.$emit("add");
+         }
+     }
+}
+
+new Vue({
+    el:'#app',
+    components: {
+        'app-header': appHeader,  
+        'app-compo': appComponent,  
+    },
+    data:{
+        beef :{
+            num : 0,
+            name : '소고기'
+        }
+        
+    },
+    methods:{
+      numAdd : function () {
+          return this.beef.num = this.beef.num+1;
+      }  
+    }
+    
+})
+</script>
+
+</body>
+</html>
