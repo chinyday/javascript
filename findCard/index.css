@@ -1,0 +1,58 @@
+.top{
+    margin: 50px;
+    text-align: center;
+}
+
+ul::after{
+    display: block; 
+    content: ""; 
+    clear: both;
+}
+ul{
+    width: 600px;
+    margin: 0 auto;
+}
+ul li{
+    float: left; 
+    width: 100px; height: 153px; 
+    margin: 5px; 
+    border: 1px solid; 
+    cursor: pointer; 
+    font-size: 30px;
+}
+
+.gameStart.off{
+    pointer-events: none;
+}
+.cardWrap{
+    transition: 0.8s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+.card {
+    width: 100px;
+    height: 153px;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.card img{
+    width: 100%;
+}
+.front {
+    z-index: 2;
+    transform: rotateY(0deg);
+    background: bisque;
+}
+.back {
+    transform: rotateY(180deg);
+    background-color: #fff;
+    text-align: center;
+    line-height: 153px;
+}
+  
+.cardWrap.on{
+    transform: rotateY(180deg);
+}
