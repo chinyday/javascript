@@ -1,18 +1,13 @@
-/*
- 지뢰 찾기 만들기
- 10*10 배열
- 지뢰 10개
-*/
-var game_size = 10;
-var bumb_num = 10;
-var bumb = '*';
-var game_arr = new Array(game_size); // game_size에 맞는 빈 배열 생성 
+const GAME_SIZE = 10;
+const BUMB_NUM = 10;
+let bumb = '*';
+let game_arr = new Array(GAME_SIZE); // GAME_SIZE에 맞는 빈 배열 생성 
 
 
 // 게임 테이블 작성
 function init() {
    for (var row  = 0; row  < game_arr.length; row ++) {       
-        game_arr[row] = new Array(game_size); // 각 요소마다 또다시 game_size의 갯수만큼의 요소를 가지는 배열을 생성 
+        game_arr[row] = new Array(GAME_SIZE); // 각 요소마다 또다시 GAME_SIZE의 갯수만큼의 요소를 가지는 배열을 생성 
         for (var column  = 0; column  < game_arr[row].length; column ++) {
             game_arr[row][column] = 0; //기본 0으로 초기화  
         }
@@ -40,7 +35,7 @@ function thisLocationisValue(x,y) {
 
 // 폭탄을 갯수만큼 설치
 function setBumb() {
-    for(var i=0; i< bumb_num; i++){
+    for(var i=0; i< BUMB_NUM; i++){
         var bumbLocation = thisLocationisValue();
         game_arr[bumbLocation.x][bumbLocation.y] = bumb;  
     }
@@ -52,7 +47,7 @@ function increaseCount(box) {
 }
 
 function isVaild(box) {
-    return (box.x >= 0 && box.x < bumb_num) &&(box.y >= 0 && box.y < bumb_num) && game_arr[box.x][box.y] != bumb ;
+    return (box.x >= 0 && box.x < BUMB_NUM) &&(box.y >= 0 && box.y < BUMB_NUM) && game_arr[box.x][box.y] != bumb ;
 }
 
 // 폭탄일 경우 주변에 박스의 위치를 확인 및 증가
@@ -81,8 +76,8 @@ function checkNearBox(x,y) {
 
 // 현재 위치가 폭탄인지를 확인
 function countBumb() {
-    for (var x = 0; x < bumb_num; x++) {
-        for (var y = 0; y < bumb_num; y++) {
+    for (var x = 0; x < BUMB_NUM; x++) {
+        for (var y = 0; y < BUMB_NUM; y++) {
             if( game_arr[x][y] === bumb){
                 increaseCountPro(x,y);
             }
@@ -97,7 +92,7 @@ function setUI() {
     var findbumb_wrap = document.getElementById('findbumb_wrap');
     
     var innerUi = '<ul id="findbumb">';
-    for(var x = 0; x < game_size; x++){
+    for(var x = 0; x < GAME_SIZE; x++){
         for(var y = 0; y < game_arr[x].length; y++){
             innerUi += "<li onclick='click_box()' value='" + game_arr[x][y] + "'>" + game_arr[x][y] + "</li>";
         }  
@@ -111,6 +106,7 @@ function click_box() {
     var this_value = event.target.getAttribute('value');
     if(this_value == '*'){
         alert('find bumb!');
+        return;
     }else{
         event.target.setAttribute('class','on');        
     }
@@ -120,6 +116,8 @@ function start() {
     init();
     setBumb();
     countBumb();
+    document.querySelector('.btn_start button').classList.add('disabled');
+    document.querySelector('.btn_reset button').classList.remove('disabled');
 }
 
 function reset() {

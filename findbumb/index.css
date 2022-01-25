@@ -1,6 +1,33 @@
+.title{
+    text-align: center;
+    font-size: 30px;
+    margin: 50px;
+}
 
-#findbumb,
+.disabled{
+    pointer-events: none;
+    color:#ddd;
+}
+
 .btn_box{
+    margin: 0 auto 30px;
+    width: 430px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn_box li{
+    margin-right: 10px;
+}
+.btn_box button{
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid;
+    padding: 10px;
+    font-size: 15px;
+}
+
+#findbumb{
     display: block;
     content: "";
     clear: both;
@@ -35,14 +62,4 @@
 
 #findbumb li.on::before{
     opacity: 0;
-}
-.btn_box{
-    margin: 60px auto 20px;
-    width: 430px;
-    height: 20px;
-}
-
-.btn_box li{
-    float: left;
-    margin-right: 10px;
 }
