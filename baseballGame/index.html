@@ -5,22 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>야구게임</title>
     <link type="text/css" rel="stylesheet" href="reset.css"> 
-    <link type="text/css" rel="stylesheet" href="index.css">   
+    <link type="text/css" rel="stylesheet" href="index.css"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">  
 </head>
 <body>
     <div class="wrap">
-        <button class="startBtn" type="button">Start</button>
-        <button class="resetBtn" type="button">Reset</button>
-        <span class="game_num"></span>
-        <form id="get_number">
-        
-            insert number : <input class="insert_number" type="text" name="get_number" maxlength="3">
-            <button class="submitBtn" type="button">Submit</button>
-        </form>
-        
-        <span class="end_text"></span>
-        <ul class="ul"></ul>
-       
+
+        <h1>🤗 숫자 야구 게임 🤗</h1>
+
+        <section class="btn_wrap">
+            <button class="startBtn" type="button"><i class="fas fa-play"></i></button>
+            <button class="resetBtn disabled" type="button"><i class="fas fa-reply"></i></button>
+            <button class="qustBtn" type="button"> <i class="far fa-question-circle"></i></button>
+        </section>
+        <section class="number_wrap">
+            <form id="get_number">
+                <span class="game_num"></span>
+                <p>✨ 숫자를 입력해주세요 ✨</p>
+                <input class="insert_number" type="text" name="get_number" maxlength="3">
+                <button class="submitBtn" type="button"><i class="fas fa-baseball-ball"></i></button>
+            </form>
+        </section>
+        <div class="text_wrap"></div>
+        <section>
+            <ul class="ul"></ul>
+        </section>
+        <section class="notice_wrap">
+            <button class="closeBtn" type="button"><i class="far fa-window-close"></i></button>
+            <h2>게임 규칙</h2>
+            <ul>
+              <li>- 게임에 사용되는 숫자는 0~9 까지 서로 다른 세자리의 숫자입니다.</li>
+              <li>- 숫자와 위치가 동일한 경우, 스트라이크(S)를 제시합니다.</li>
+              <li>- 숫자는 맞지만 위치가 다른 경우, 볼(B)을 제시합니다.</li>
+              <li>- 숫자와 위치가 모두 다른 경우, 아웃(O)을 제시합니다.</li>
+              <li>- 10번안에 숫자를 맞추면 게임은 종료됩니다.</li>
+            </ul>
+        </section>
     </div>
      <script src="index.js"></script>
 </body>

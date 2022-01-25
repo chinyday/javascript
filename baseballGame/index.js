@@ -1,20 +1,27 @@
-var inputNumAmount = 3; // 입력 되는 숫자 수
-var num_arr = [];
-var insert_number = document.querySelector('.insert_number'),
+const inputNumAmount = 3; // 입력 되는 숫자 수
+let num_arr = [];
+let insert_number = document.querySelector('.insert_number'),
     game_num = document.querySelector('.game_num');
 
-var numberObj = {
+let board = document.querySelector('.notice_wrap');
+let numberWrap = document.querySelector('.number_wrap');
+
+let numberObj = {
     ball : 0,
     strike : 0,
     out : 0,
-    count : 10
+    count : 10,
+    tryCnt : 0
 }
- 
+
+let boardFlg = false;
+let playFlg = true;
+
 // input 오직 숫자만 받아오는 프로세스
 function isNumberKey(evt){
-    var num0 = 48, num9 = 57;
+    const num0 = 48, num9 = 57;
     if(evt.keyCode<= num0 || evt.keyCode <= num9){
-        return true
+        return true;
     }
     return false;
 }
@@ -65,13 +72,14 @@ function drowingUlProcess(data) {
     var ul = document.querySelector('.ul'),
         li = document.createElement('li');
         
+        console.log(data);
     li.classList.add("li");
-    li.innerHTML = '<span class="my_data"> 입력한 숫자 : ' + data.num+'</span><span class="state"> strike ' + data.strike + ', ball ' + data.ball + ', out ' + data.out + '</span>'; 
+    li.innerHTML = '<span>'+data.cnt+'.</span><span class="my_data">' + data.num+'</span><span class="state"> S(' + data.strike + ')/B(' + data.ball + ')/O(' + data.out + ')</span>'; 
     ul.appendChild(li); 
 }
 
 // 게임 카운팅을 관리하는 프로세스
-var gameCount = {
+let gameCount = {
     count : function () {
         return numberObj.count;
     },
@@ -110,12 +118,17 @@ function compareDataProcess(my_value_arr, game_value) {
         }else if(resultType == 'strike'){
             numberObj.strike++;
         } 
+
+   
     }
+    numberObj.tryCnt++;
+
     return {
         num : insert_number.value,
         strike : numberObj.strike,
         ball : numberObj.ball,
-        out : numberObj.out
+        out : numberObj.out,
+        cnt : numberObj.tryCnt
     };         
 }
 
@@ -151,7 +164,7 @@ function validatecheck(count) {
 function isRightAnswer(data) {
     if(data.strike === 3){ // 게임이 올바르게 진행될 수 있고 게임이 끝나야하는 상태
         insertStateTxt('숫자 맞추기 성공!');
-        document.querySelector('.insert_number').disabled = true;
+        numberWrap.style.display = 'none';
     }     
 }
 
@@ -176,14 +189,14 @@ function baseballProcess() {
 
 // 정상적으로 게임이 진행되지 않았을 경우에 어떠한 메시지를 노출해주는 프로세스
 function insertStateTxt(txt) {
-    document.querySelector('.end_text').innerText = txt;
+    document.querySelector('.text_wrap').innerText = txt;
 }
 
 // 현재 그러져있는 ui를 지우는 프로세스
 function reSetUi() {
     var ul = document.querySelector('.ul');
     game_num.setAttribute('value','');
-    document.querySelector('.end_text').innerText = '';
+    document.querySelector('.text_wrap').innerText = '';
     document.querySelector('.insert_number').disabled = false;
     
     while (ul.firstChild) {
@@ -192,16 +205,37 @@ function reSetUi() {
 }
 
 function reSet() { 
+    playFlg = !playFlg;
     reSetUi();
     init();
 }
+
 function init(){
-    setNumberinArr();   
-    count=10;
+    if(playFlg){
+        setNumberinArr();   
+        numberObj.count=10;
+        numberObj.tryCnt=0;
+        numberWrap.style.display = 'block';
+        document.querySelector('.startBtn').classList.add('disabled');
+        document.querySelector('.resetBtn').classList.remove('disabled');
+    }
+    playFlg = !playFlg;
 }
+
+function displayBoard() {
+    if(!boardFlg){
+        board.style.display = 'block';
+    }else{
+        board.style.display = 'none';
+    }
+    boardFlg = !boardFlg;
+}
+
 
 document.querySelector('.startBtn').addEventListener('click', init);
 document.querySelector('.resetBtn').addEventListener('click', reSet);
+document.querySelector('.qustBtn').addEventListener('click', displayBoard);
+document.querySelector('.closeBtn').addEventListener('click', displayBoard);
 document.querySelector('.submitBtn').addEventListener('click', baseballProcess);
 
 

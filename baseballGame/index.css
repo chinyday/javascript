@@ -1,15 +1,93 @@
+button{
+  border: none;
+  background: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+.disabled{
+  pointer-events: none;
+  color:#ddd;
+}
+
 .wrap{
-    width: 500px;
-    margin: 50px auto;
+  height: 100vh;
+  width: 800px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.wrap h1{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.btn_wrap{
+  margin: 30px 0;
+}
+.btn_wrap button{
+  margin: 0 10px;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 5px 11px;
+}
+.btn_wrap button:hover{
+  transform: scale(1.1);
+}
+
+.number_wrap{
+  display: none;
+}
+.number_wrap p{
+  margin-bottom: 10px;
+}
+.number_wrap .insert_number{
+  height: 21px;
+  text-align: center;
+  width: 120px;
+}
+.number_wrap .submitBtn{
+  vertical-align: sub;
+}
+
+.text_wrap{
+  margin: 40px;
 }
 
 .ul{
-    margin-top: 30px;
+  width: 300px;
+  margin: 0 auto;
+  font-size: 20px;
 }
 
 .ul li{
-    margin: 5px 0;
+  margin: 10px 0;
+  display: flex;
+}
+.ul li span{
+  flex: auto;
 }
 
-
-
+.notice_wrap{
+  display: none;
+  background: whitesmoke;
+  position: absolute;
+  z-index: 10;
+  top: 15%;
+  transform: translate(25%, 20%);
+  padding: 55px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.notice_wrap .closeBtn{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.notice_wrap h2{
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+.notice_wrap li{
+  line-height: 1.5;
+}
