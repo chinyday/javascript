@@ -1,18 +1,50 @@
-.top{
-    margin: 50px;
+.title{
     text-align: center;
+    font-size: 30px;
+    margin: 50px;
+}
+.control_wrap{
+    text-align: center; 
+    width: 480px;
+    margin: 0 auto;
+}
+.control_wrap .top{
+    display: flex;
+    place-self: flex-end;
+}
+.control_wrap button.off{
+    pointer-events: none;
+    border: 1px solid #ddd;
+    color: #ddd;
+}
+.control_wrap input {
+    width: 300px;
+    border: 1px solid #333;
+    border-radius: 3px;
+}
+.control_wrap button {
+    border: 1px solid #333;
+    cursor: pointer;
+    background: transparent;
+    border-radius: 3px;
+    padding: 9px;
+    color: #333;
+    margin-left: 10px;
 }
 
-ul::after{
+.borad_wrap{
+    margin-top: 50px;
+}
+.borad_wrap ul::after{
     display: block; 
     content: ""; 
     clear: both;
 }
-ul{
-    width: 600px;
+.borad_wrap ul{
+    /* width: 600px; */
     margin: 0 auto;
 }
-ul li{
+.borad_wrap ul li{
     float: left; 
     width: 100px; height: 153px; 
     margin: 5px; 
@@ -21,9 +53,6 @@ ul li{
     font-size: 30px;
 }
 
-.gameStart.off{
-    pointer-events: none;
-}
 .cardWrap{
     transition: 0.8s;
     transform-style: preserve-3d;

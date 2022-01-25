@@ -1,22 +1,15 @@
-/*
+const GAME_MINIMUM_COUNT = 2;  // 1개면 맞출게 없기 때문에 최소 2개 이상의 카드를 선택해야지 게임이 진행되도록 초기 설정
+let clickedCards = [];
 
-1. 숫자를 입력해서 가로 세로 지정
-2. 랜덤으로 2개의 동일한 숫자를 뿌려준다.
-3. 클릭하면 해당 숫자가 보이도록
-4. 두번째 클릭하면 해당 숫자가 보이고
-- 두 개의 카드가 맞으면, 화면은 뒤집어 진 상태로 게임 끝
-- 두 개의 카드가 맞지 않으면, 3초뒤에 두 개의 카드는 다시 뒤집어 진다
-5. 모든 카드가 맞춰지면 게임 끝 
- 
-*/
+let startBtn = document.querySelector(".gameStart");
+let reloadBtn = document.querySelector(".gameReload");
 
-var clickedCards = [];
-
-// 
-var clickedCardControl = {
+let clickedCardControl = {
+    
     getGameCnt : 0,
     clickedCnt : 0,
     completeCnt : 0,
+
     increaseCompleteCnt : function (cnt) {
         this.completeCnt = cnt+1;
         clickedCardControl.isCompleted();
@@ -44,14 +37,14 @@ var clickedCardControl = {
 }
 
 function random(gameNumber) {
-    var arr = []; 
+    let arr = []; 
     for (let i = 0; i < gameNumber; i++) {
         arr[i] = i+1;
         arr[i+gameNumber] = i+1;
     }
     //이거는 구글링한거라서 사용법은 대충 알았는데 정확하게 이해가 안되어 있음 이 부분에 대해서는 재확인 예정
     arr.sort(function(a, b){
-        return 0.5 - Math.random()
+        return 0.5 - Math.random();
     });
     
     return arr;
@@ -60,20 +53,18 @@ function random(gameNumber) {
 // 게임 갯수를 가지고 와서 배열안에 게임을 랜덤으로 넣어주는 프로세스 
 function getRandomNum(gameNumber) {
     clickedCardControl.getGameCnt = gameNumber;
-    var getRandomArr = random(gameNumber);
+    let getRandomArr = random(gameNumber);
     printUi(getRandomArr, gameNumber); 
 }
 
 // 전달받은 데이터를 화면에 출력해주는 프로세스
 function printUi(arr, gameNumber) {
-    var ul = document.querySelector('.ul');
+    let ul = document.querySelector('.ul');
     
-    if (gameNumber < 5) {
-        ul.style.width = (120*gameNumber)+'px';
-    }
+    ul.style.width = (115*gameNumber)+'px';
     
     for (let i = 0; i < arr.length; i++) {
-        var li = document.createElement('li');
+        let li = document.createElement('li');
         li.innerHTML = `
         <div class="cardWrap">
             <div class="card front" data-num="`+arr[i]+`"><img src="img/back.jpg"/></div>
@@ -96,18 +87,16 @@ function inputCardValue(card) {
 
 // 두개의 카드를 선택하고 비교하는 프로세스
 function clickCard(card) {
-    
     if(card.querySelector('.cardWrap').classList.contains('on')){
         return false;
     }
     inputCardValue(card);
     clickedCardControl.iscompared();
-
 }
 
 // 선택된 두개의 카드를 비교하는 프로세스
 function checkClickedCards(clickedCard) {
-    var FRIST_CLICKED_CARD = 0, // 첫번째 카드
+    let FRIST_CLICKED_CARD = 0, // 첫번째 카드
         SECOND_CLICKED_CARD = 1; //두번째 카드 
         
     setTimeout(function(){ 
@@ -126,17 +115,24 @@ function checkClickedCards(clickedCard) {
 
 // 게임 시작 버튼을 눌렀을 때 실행되는 프로세스 
 function startGame() {
-    var gameNumber = parseInt(document.querySelector(".gameNumber").value);
-    document.querySelector(".gameStart").classList.add('off');
+
+    let getInputNum= document.querySelector(".gameNumber").value;
     
-    var GAME_MINIMUM_COUNT= 2;  // 1개면 맞출게 없기 때문에 최소 2개 이상의 카드를 선택해야지 게임이 진행되도록 초기 설정
-    
-    if (gameNumber < GAME_MINIMUM_COUNT) {
-        document.querySelector(".gameStart").classList.remove('off');
-        document.querySelector(".gameNumber").value = null;
-        alert('최소 두 개 이상의 카드를 선택해야지 게임이 동작합니다.');
-        return false;
+    if(getInputNum == ""){
+        alert('1~10까지의 숫자를 넣어주세요.');
+        return;
     }
+
+    let gameNumber = parseInt(getInputNum);
+    startBtn.classList.add('off');
+        
+    if (gameNumber < GAME_MINIMUM_COUNT) {
+        startBtn.classList.remove('off');
+        document.querySelector(".gameNumber").value = null;
+        alert('최소 2 이상의 숫자를 넣어야지 게임이 동작합니다.');
+        return;
+    }
+    reloadBtn.classList.remove('off');
     getRandomNum(gameNumber); 
 }
 
@@ -145,9 +141,6 @@ function reloadGame() {
     location.reload();
 }
 
-// init
-function init() {
-    document.querySelector(".gameStart").addEventListener('click', startGame); 
-    document.querySelector(".gameReload").addEventListener('click', reloadGame); 
-}
-init();
+startBtn.addEventListener('click', startGame); 
+reloadBtn.addEventListener('click', reloadGame); 
+

@@ -6,15 +6,20 @@
     <title>카드찾기</title>
     <link type="text/css" rel="stylesheet" href="reset.css">
     <link type="text/css" rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
 </head>
 <body>
-    <div class="top">
-        카드 숫자를 선택하시오.
-        <input type="number" class="gameNumber">
-        <button class="gameStart">저장</button>
-        <button class="gameReload">리로드</button>
-    </div>
-    <ul class="ul"></ul>
-    <script src="index5.js"></script>
+
+    <h1 class="title">❣️카드 게임❣️</h1>
+    <section class="control_wrap">
+        <div class="top">
+            <input type="number" class="gameNumber" placeholder="1~10까지 시작할 카드의 갯수를 선택해주세요.">
+            <button class="gameStart" type="button">게임 시작</button>
+            <button class="gameReload off" type="button">다시 시작</button>
+        </div>
+    </section>
+    <section class="borad_wrap">
+        <ul class="ul"></ul>
+    </section>
 </body>
 </html>
