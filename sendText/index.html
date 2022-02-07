@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>테스트 코딩</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="reset.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="index.css">
-    
-</head>
-<body>
-    <div class="wrapper">
-        <div class="category_wrap">
-            <form>
-                <span><input type="radio" value="동료" name="btn" id="com"><label for="com">동료</label></span>
-                <span><input type="radio" value="친구" name="btn" id="fri"><label for="fri">친구</label></span>
-                <span><input type="radio" value="가족" name="btn" id="fam"><label for="fam">가족</label></span>
-            </form>
-        </div>
-        <div class="txt_wrap">
-            <textarea class="txt_area"></textarea>
-        </div>
-        <div class="send_wrap">
-            <button class="send_btn" type="submit" value="submit">Submit</button>
-        </div>
-        <div class="list_wrap">
-            <table class>
-                <thead class="subtitle">
-                    <tr>
-                        <td class="to">to</td>
-                        <td>text</td>
-                    </tr>
-                </thead>
-                <tbody class="js-list"></tbody>
-            </table>
-        </div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
-    <script src="index.js"></script>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>send Text</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" media="screen" href="reset.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="index.css">
+		<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script defer src="index.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="category_wrap">
+				<form>
+					<span><input type="radio" value="동료" name="btn" id="com"><label for="com">동료</label></span>
+					<span><input type="radio" value="친구" name="btn" id="fri"><label for="fri">친구</label></span>
+					<span><input type="radio" value="가족" name="btn" id="fam"><label for="fam">가족</label></span>
+				</form>
+			</div>
+			<div class="txt_wrap">
+				<textarea class="txt_area"></textarea>
+			</div>
+			<div class="send_wrap">
+				<button class="send_btn" type="submit" value="submit">Submit</button>
+			</div>
+			<div class="list_wrap">
+				<table class>
+					<thead class="subtitle">
+						<tr>
+							<td class="to">to</td>
+							<td>text</td>
+						</tr>
+					</thead>
+					<tbody class="js-list"></tbody>
+				</table>
+			</div>
+		</div>
+	</body>
 </html>
