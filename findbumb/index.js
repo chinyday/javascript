@@ -6,9 +6,9 @@ let game_arr = new Array(GAME_SIZE); // GAME_SIZE에 맞는 빈 배열 생성
 
 // 게임 테이블 작성
 function init() {
-   for (var row  = 0; row  < game_arr.length; row ++) {       
+   for (let row  = 0; row  < game_arr.length; row ++) {       
         game_arr[row] = new Array(GAME_SIZE); // 각 요소마다 또다시 GAME_SIZE의 갯수만큼의 요소를 가지는 배열을 생성 
-        for (var column  = 0; column  < game_arr[row].length; column ++) {
+        for (let column  = 0; column  < game_arr[row].length; column ++) {
             game_arr[row][column] = 0; //기본 0으로 초기화  
         }
     }    
@@ -16,8 +16,8 @@ function init() {
 
 // 랜덤으로 폭탄 설치할 위치 선정
 function checkBumbLocation() {  
-    var x = parseInt(Math.random()*10);
-    var y = parseInt(Math.random()*10);
+    let x = parseInt(Math.random()*10);
+    let y = parseInt(Math.random()*10);
     return {
         'x' : x,
         'y' : y
@@ -26,7 +26,7 @@ function checkBumbLocation() {
 
 // 선정된 위치에 폭탄이 있는지 확인
 function thisLocationisValue(x,y) {
-    var bumbLocation = checkBumbLocation();    
+    let bumbLocation = checkBumbLocation();    
     if(game_arr[bumbLocation.x][bumbLocation.y] == bumb){
         thisLocationisValue();
     }
@@ -35,8 +35,8 @@ function thisLocationisValue(x,y) {
 
 // 폭탄을 갯수만큼 설치
 function setBumb() {
-    for(var i=0; i< BUMB_NUM; i++){
-        var bumbLocation = thisLocationisValue();
+    for(let i=0; i< BUMB_NUM; i++){
+        let bumbLocation = thisLocationisValue();
         game_arr[bumbLocation.x][bumbLocation.y] = bumb;  
     }
 }
@@ -76,8 +76,8 @@ function checkNearBox(x,y) {
 
 // 현재 위치가 폭탄인지를 확인
 function countBumb() {
-    for (var x = 0; x < BUMB_NUM; x++) {
-        for (var y = 0; y < BUMB_NUM; y++) {
+    for (let x = 0; x < BUMB_NUM; x++) {
+        for (let y = 0; y < BUMB_NUM; y++) {
             if( game_arr[x][y] === bumb){
                 increaseCountPro(x,y);
             }
@@ -89,11 +89,11 @@ function countBumb() {
 // 화면에 출력
 function setUI() {
 
-    var findbumb_wrap = document.getElementById('findbumb_wrap');
+    let findbumb_wrap = document.getElementById('findbumb_wrap');
     
-    var innerUi = '<ul id="findbumb">';
-    for(var x = 0; x < GAME_SIZE; x++){
-        for(var y = 0; y < game_arr[x].length; y++){
+    let innerUi = '<ul id="findbumb">';
+    for(let x = 0; x < GAME_SIZE; x++){
+        for(let y = 0; y < game_arr[x].length; y++){
             innerUi += "<li onclick='click_box()' value='" + game_arr[x][y] + "'>" + game_arr[x][y] + "</li>";
         }  
     }
@@ -103,7 +103,7 @@ function setUI() {
 
 // 클릭했을 때, 지뢰인지 확인
 function click_box() {
-    var this_value = event.target.getAttribute('value');
+    let this_value = event.target.getAttribute('value');
     if(this_value == '*'){
         alert('find bumb!');
         return;
