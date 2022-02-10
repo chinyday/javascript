@@ -33,7 +33,7 @@
     clear: both;
 }
 #today_lotto li{
-    float: left;
+    display: inline-block;
     width: 60px;
     height: 60px;
     line-height: 60px;
@@ -44,6 +44,11 @@
     color: #fff;
     margin: 0 10px
 }
+#today_lotto .plus{
+    color: black;
+}
+
+
 .num10{ background-color: #fcc43e}
 .num20{ background-color: #8CC6E7}
 .num30{ background-color: #F18D80}

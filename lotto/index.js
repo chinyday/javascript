@@ -34,7 +34,14 @@ function setLottoUI() {
     }
 
     for (let i = 0; i < lotto_arr.length; i++) {
+// console.log(lotto_arr.length);
+        if(i == lotto_arr.length-1){
+            // console.log('in');
+            li = paintLi(lotto_arr[i]);
+            li = `<li class="plus">+</li>${li}`
+        }else{
         li = paintLi(lotto_arr[i]);
+        }
         ul.insertAdjacentHTML('beforeend', li);
     }
 
