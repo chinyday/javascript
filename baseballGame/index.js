@@ -30,8 +30,8 @@ insert_number.addEventListener("keydown", isNumberKey);
 
 // 중복되지 않는 숫자를 받아와서 배열에 넣는 프로세스
 function setNumberinArr() { 
-    for (var i = 0; i < inputNumAmount; i++) {
-        var num = isUniqueNum(); // 이름이 올바르지 않게 느껴지기 때문에 이름을 변경하자!
+    for (let i = 0; i < inputNumAmount; i++) {
+        let num = isUniqueNum(); // 이름이 올바르지 않게 느껴지기 때문에 이름을 변경하자!
         num_arr[i] = num;    
      }    
     game_num.setAttribute('value', num_arr.join('') );   
@@ -39,7 +39,7 @@ function setNumberinArr() {
 
 // 배열에 중복되지 않는 숫자가 나올 때까지 랜덤의 숫자를 뽑아내는 프로세스
 function isUniqueNum(){
-    var isDubCheck = true;
+    let isDubCheck = true;
     while (isDubCheck) {
         random_num = Math.floor(Math.random()*10);
         if(!num_arr.includes(random_num)) {
@@ -50,7 +50,7 @@ function isUniqueNum(){
 }
 
 // 정답과 내가 선택한 숫자가 Strike, Ball 인지 관리하는 프로세스
-var gameType = {    
+let gameType = {    
     isStrike: function(i, my_value_arr, game_value_arr) {
         if(my_value_arr[i] == game_value_arr[i]){
             return true;
@@ -69,7 +69,7 @@ var gameType = {
 
 // 전달받은 데이터를 그려주는 프로세스
 function drowingUlProcess(data) {
-    var ul = document.querySelector('.ul'),
+    let ul = document.querySelector('.ul'),
         li = document.createElement('li');
         
         console.log(data);
@@ -95,7 +95,7 @@ let gameCount = {
 
 // 비교한 숫자의 상태값을 (strike, ball, out 인지 여부 체크) 리턴하는 프로세스
 function checkDataReturnType(i, my_value_arr, game_value){
-    var game_value_arr = game_value.split("");
+    let game_value_arr = game_value.split("");
     
     if(gameType.isStrike(i, my_value_arr, game_value_arr)){
         return 'strike';
@@ -109,7 +109,7 @@ function checkDataReturnType(i, my_value_arr, game_value){
 // 입력받은 숫자와 정답을 비교하는 프로세스 
 function compareDataProcess(my_value_arr, game_value) { 
     for (let i = 0; i < my_value_arr.length; i++) {
-        var resultType = checkDataReturnType(i, my_value_arr, game_value);  
+        let resultType = checkDataReturnType(i, my_value_arr, game_value);  
           
         if(resultType == 'out'){
             numberObj.out++;
@@ -134,7 +134,7 @@ function compareDataProcess(my_value_arr, game_value) {
 
 // 게임 횟수 차감 및 횟수에 따른 실행 동작 리턴
 function validatecheck(count) {
-    var my_value_arr = insert_number.value.split("");
+    let my_value_arr = insert_number.value.split("");
 
     if(count==0){
         gameCount.decreaseCounting();
@@ -171,15 +171,15 @@ function isRightAnswer(data) {
 // 오케스트레이션 하는 프로세스
 function baseballProcess() {  
     // 안에 내용이 너무 복잡하게 되어 있어서 이해하는 부분이 조금 어렵기 때문에 이 부분은 좀 더 댑스를 나누자 
-    var my_value_arr = insert_number.value.split("");
-    var game_value = game_num.getAttribute('value');  
+    let my_value_arr = insert_number.value.split("");
+    let game_value = game_num.getAttribute('value');  
     numberObj.ball = 0, numberObj.strike = 0, numberObj.out = 0;   
     insertStateTxt('');
-    var gameCounting = gameCount.increaseCounting();
-    var isGameState = validatecheck(gameCounting); // 타입이라고 하면 정의되어 있는 값이 넘어가기 때문에 이름이 올바르지 않음
+    let gameCounting = gameCount.increaseCounting();
+    let isGameState = validatecheck(gameCounting); // 타입이라고 하면 정의되어 있는 값이 넘어가기 때문에 이름이 올바르지 않음
  
     if(isGameState == true){ // 게임이 올바르게 진행될 수 있는 상태
-        var resultDrowingData = compareDataProcess(my_value_arr, game_value);
+        let resultDrowingData = compareDataProcess(my_value_arr, game_value);
         drowingUlProcess(resultDrowingData);
         isRightAnswer(resultDrowingData);
     }
@@ -194,7 +194,7 @@ function insertStateTxt(txt) {
 
 // 현재 그러져있는 ui를 지우는 프로세스
 function reSetUi() {
-    var ul = document.querySelector('.ul');
+    let ul = document.querySelector('.ul');
     game_num.setAttribute('value','');
     document.querySelector('.text_wrap').innerText = '';
     document.querySelector('.insert_number').disabled = false;
